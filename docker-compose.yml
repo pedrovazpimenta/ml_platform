@@ -1,30 +1,33 @@
 version: "3.3"
 services:
   training_app:
-    context: .
-    dockerfile: training_app/Dockerfile
-  image: training_app
-  container_name: training_app
-  ports:
-    - "8080:8080"
-  volumes: 
-    - type: bind
-      sourge: ./training_app
-      target: /training_app
-    - type: bind
-      source: ./resources
-      target: /resources
+    build:
+      context: .
+      dockerfile: training_app/Dockerfile
+    image: training_app
+    container_name: training_app
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./training_app
+        target: /training_app
+      - type: bind
+        source: ./resources
+        target: /resources
+
   classification_app:
-    context: .
-    dockerfile: training_app/Dockerfile
+    build:
+      context: .
+      dockerfile: classification_app/Dockerfile
     image: classification_app
     container_name: classification_app
     ports:
-    - "8090:8090"
-    volumes: 
+      - "8090:8090"
+    volumes:
       - type: bind
-        sourge: ./training_app
-        target: /training_app
+        source: ./classification_app
+        target: /classification_app
       - type: bind
         source: ./resources
         target: /resources
