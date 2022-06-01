@@ -2,6 +2,8 @@
 
 ## Schematics
 
+As a guide for our development, we are following this schematics:
+
 ![](resources/schematics.png "")
 
 ## Introduction

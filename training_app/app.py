@@ -34,10 +34,6 @@ def get_run_hash():
     return run_hash.hexdigest()
 
 
-def train_model(arg):
-    print(arg)
-
-
 application = flask.Flask(__name__)
 
 
@@ -57,9 +53,7 @@ def train():
         "training_dataset": flask.request.form.get("training_dataset", ""),
     }
     try:
-        application.poolExecutor.submit(
-            train_model, parameters["training_dataset"]
-        )
+        application.poolExecutor.submit(print, parameters["training_dataset"])
         logger("TRAINING_STARTED", run_hash)
     except Exception as e:
         logger("ERROR: " + str(e), run_hash)
